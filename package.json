@@ -19,6 +19,10 @@
   "dependencies": {
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
+<<<<<<< HEAD
     "request": "^2.69.0"
+=======
+    "pusher": "^1.2.0"
+>>>>>>> 519031ee0ef006fb8aa0a9bcc173d66cc9b89b96
   }
 }
