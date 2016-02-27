@@ -1,9 +1,15 @@
 var express = require('express');
 var app = express();
+
+var bodyParser = require('body-parser');
+var place = require('./place.js');
+
 var port = process.env.PORT || 8000;
 var router = express.Router();
 
+
 var mongoose = require('mongoose');
+
 var bodyParser = require('body-parser');
 var psh = require('./pusher');
 var usrDb = require('./app/models/user');
@@ -59,12 +65,13 @@ psh.init;
 
 psh.hello();
 
-
-
-
+app.get('/api/place', function(req, res) {
+  place.place(function(result) {res.json(result)}, req.query);
+});
 
 //The express stuff
 app.use('/', router);
+
 app.listen(port, function(){
   console.log('Running on' + ' :' + port);
 });
