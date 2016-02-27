@@ -27,8 +27,6 @@ module.exports.place = function(callback, data) {
   }
 
   request("https://maps.googleapis.com/maps/api/place/nearbysearch/json" + string, function(error, response, body) {
-    //console.log("https://maps.googleapis.com/maps/api/place/nearbysearch/json" + string);
-    //console.log(JSON.parse(body).results[0]);
     first = JSON.parse(body).results[0];
 
     result = {
