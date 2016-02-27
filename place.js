@@ -31,7 +31,7 @@ module.exports.place = function(callback, data) {
 
     result = {
       "name": first.name,
-      "icon": first.icon,
+      "icon": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference=" + first.photos[0].photo_reference + "&key=" + get.key,
       "location": first.geometry.location,
       "vicinity": first.vicinity
     };

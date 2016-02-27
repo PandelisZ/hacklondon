@@ -11,7 +11,7 @@ With these optional parameters:
 Example response:
 `{
   "name": "Pizza Express",
-  "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+  "icon": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference=CmRdAAAA0hf92dacPNx3PRs4NHC8knb4w8-wHgzVOaWQdlJ1tej0mTVJ5t2EdseJZRQLyAGLKxcQB8EPKyiGKKD_D_s6OXqHjOVptjXQMvIad6b5xWzwrIX_jYI8lidcZpR5YwXZEhAMkn-pXM7AEAtKKadE41-nGhRLaSRaOd1GfuXYNBfQ7h_rrSLF-w&key=AIzaSyDA5DX-cT2GxcDlUFqGwmOk8tweI0MjvZQ",
   "location": {
     "lat": 51.5372414,
     "lng": -0.1454804
