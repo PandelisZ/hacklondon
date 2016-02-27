@@ -53,7 +53,7 @@ app.post('/api/search', function(req, res){
       res.send('Oh f*$k');
     }
     console.log("saved")
-    match.get(function(response){
+    match.get(function(data._id, response){
       res.json(response);
     });
   });
