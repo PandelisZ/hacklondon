@@ -33,7 +33,8 @@ app.post('/api/search', function(req, res){
 
   var newUsr = new usrDb();
   newUsr.name = req.body.name;
-  newUsr.location = req.body.location; // longitude, latitude
+  newUsr.location.lat = req.body.lat; // lat, long
+  newUsr.location.lng = req.body.lng;
   newUsr.searching = true;
   //newUsr.criteria.distance
   newUsr.criteria.food = req.body.food;
