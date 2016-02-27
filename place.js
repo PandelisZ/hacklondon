@@ -16,7 +16,7 @@ module.exports.place = function(callback, data) {
 
   for(var key in data) {
     get[key] = data[key];
-  }
+  }//optional parameters
 
   var string = "?";
 
@@ -30,7 +30,7 @@ module.exports.place = function(callback, data) {
     first = JSON.parse(body).results[0];
 
     result = {
-      "name": first.name,
+      "name": first.name, //image size down here
       "icon": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference=" + first.photos[0].photo_reference + "&key=" + get.key,
       "location": first.geometry.location,
       "vicinity": first.vicinity
