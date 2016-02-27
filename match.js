@@ -17,9 +17,21 @@ module.exports.get = function(id, callback, response){
           var matched = [id, data._id];
 
           for(var i =0; i<2; i++){
-            usrDb.findOneAndUpdate({'_id': matched[i]}, { 'searching': false}, function(err, data){
 
-            });
+
+            //Optional no delete keep in db but set searching to false
+            // usrDb.findOneAndUpdate({'_id': matched[i]}, { 'searching': false}, function(err, data2){
+            //
+            // });
+
+            usrDb.
+              find({ '_id': matched[i]}).
+              where('nodel').
+              ne(true).
+              remove(function(err, data3){
+
+              })
+
           }
 
 

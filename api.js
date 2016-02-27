@@ -42,6 +42,7 @@ app.post('/api/search', function(req, res){
   newUsr.location.lat = req.body.lat; // lat, long
   newUsr.location.lng = req.body.lng;
   newUsr.searching = true;
+  newUsr.nodel = req.body.nodel;
   //newUsr.criteria.distance
   newUsr.criteria = {food: req.body.food, topic: req.body.topic};
 
@@ -61,6 +62,17 @@ app.post('/api/search', function(req, res){
   });
 
 
+
+});
+
+app.get('/api/map', function(req,res){
+
+  usrDb.
+    find({ searching: true }).
+    limit(10).
+    exec(function(err, data){
+      res.json(data);
+    });
 
 });
 

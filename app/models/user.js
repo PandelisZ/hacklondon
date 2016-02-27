@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 // create a schema
 var userSchema = new Schema({
   name: String,
+  nodel: Boolean,
   location: {
     lat: Number,
     lng: Number
