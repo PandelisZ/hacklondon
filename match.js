@@ -13,6 +13,16 @@ module.exports.get = function(id, callback, response){
         }else{
           callback(data);
           console.log(data);
+
+          var matched = [id, data._id];
+
+          for(var i =0; i<2; i++){
+            usrDb.findOneAndUpdate({'_id': matched[i]}, { 'searching': false}, function(err, data){
+
+            });
+          }
+
+
         };
       });
     // usrDb.findOne({ 'searching': true }).where('_id').ne(id).exec(function (err, data) {
