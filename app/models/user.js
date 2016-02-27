@@ -5,10 +5,10 @@ var Schema = mongoose.Schema;
 // create a schema
 var userSchema = new Schema({
   name: String,
-  location: {
-    type: [Number],  // [<longitude>, <latitude>]
-    index: '2d'      // create the geospatial index
-  },
+  location: [{
+    lat: Number,
+    lng: Number
+  }],
   searching: Boolean,
   criteria: [{
     distance: Number,
