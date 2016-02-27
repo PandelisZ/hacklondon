@@ -3,8 +3,14 @@ var app = express();
 var port = process.env.PORT || 8000;
 var router = express.Router();
 
+var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var psh = require('./pusher');
+var usrDb = require('./app/models/user');
+
+mongoose.connect('mongodb://hacklondon:hacklondon@ds059694.mlab.com:59694/hacklondon');
+
+
 
 router.use(function(req, res, next){
   console.log('Something is happening');
@@ -17,8 +23,30 @@ app.use(bodyParser.urlencoded({
 
 app.use('/', express.static('public'));
 
-app.get('/api/newser', function(req, res){
+app.get('/test', function(req, res){
 
+  res.send('works');
+
+});
+
+app.post('/api/search', function(req, res){
+
+  var newUsr = new usrDb();
+  newUsr.name = req.body.name;
+  newUsr.location = req.body.location; // longitude, latitude
+  newUsr.searching = true;
+  //newUsr.criteria.distance
+  newUsr.criteria.food = req.body.food;
+  newUsr.criteria.topic = req.body.topic;
+
+  newUsr.save(function(err,data){
+    if(err){
+      res.send('Oh f*$k');
+    }
+
+    res.json({"id": data._id});
+
+  });
 
 
 
@@ -27,6 +55,8 @@ app.get('/api/newser', function(req, res){
 
 
 psh.init;
+
+psh.hello();
 
 
 

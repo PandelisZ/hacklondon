@@ -8,11 +8,14 @@ var pusher = new Pusher({
 });
 pusher.port = 443;
 
-pusher.trigger('test_channel', 'my_event', {
-  "message": "hello world"
-});
+hello = function(){
+  pusher.trigger('test_channel', 'my_event', {
+    "message": "hello world"
+  });
+}
 
 
 //Export Modules
 
 module.exports.init = pusher;
+module.exports.hello = hello ;
