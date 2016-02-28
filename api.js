@@ -43,6 +43,7 @@ app.post('/api/search', function(req, res){
   newUsr.location.lng = req.body.lng;
   newUsr.searching = true;
   newUsr.nodel = req.body.nodel;
+  newUsr.img = 'https://avatars.io/twitter/' + req.body.name;
   //newUsr.criteria.distance
   newUsr.criteria = {food: req.body.food, topic: req.body.topic};
 
@@ -54,10 +55,24 @@ app.post('/api/search', function(req, res){
       res.send('Oh f*$k');
     }
     console.log("saved")
-    var id = data._id;
+    var id = [];
+    id.push(data._id);
+    id.push(newUsr.criteria.food);
+    id.push(newUsr.criteria.topic)
     console.log(id);
-    match.get(id, function(response){
-      res.json(response);
+    match.get(id, function(resData){
+
+      var coords = resData[0].location.lat + ',' + resData[0].location.lng;
+      var parameters = [];
+      parameters.location = String(coords);
+      parameters.keyword = resData[0].criteria.food.toLowerCase();
+
+      place.place(parameters, function(result){
+        result.match = resData[0];
+        res.json(result);
+
+      });
+
     });
   });
 
@@ -80,7 +95,8 @@ app.get('/api/map', function(req,res){
 //psh.hello();
 
 app.get('/api/place', function(req, res) {
-  place.place(function(result) {res.json(result)}, req.query);
+  var data = { "location": '51.520658,-0.105688', "keyword": "sushi"};
+  place.place(data, function(result) {res.json(result)}, req.query);
 });
 
 //The express stuff

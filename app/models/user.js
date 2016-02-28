@@ -6,6 +6,7 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
   name: String,
   nodel: Boolean,
+  img: String,
   location: {
     lat: Number,
     lng: Number

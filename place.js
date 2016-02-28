@@ -3,13 +3,14 @@ var request = require('request');
 
 
 
-module.exports.place = function(callback, data) {
+module.exports.place = function(data, callback) {
+  console.log(data);
   get = {
     "key": "AIzaSyDA5DX-cT2GxcDlUFqGwmOk8tweI0MjvZQ",
     "location": '51.5448260,-0.1351860',
-    "radius": 1500,
+    "radius": 3000,
     "minprice": 1,
-    "maxprice": 2,
+    "maxprice": 4,
     "type": "restaurant",
     "opennow": true
   }
@@ -27,11 +28,15 @@ module.exports.place = function(callback, data) {
   }
 
   request("https://maps.googleapis.com/maps/api/place/nearbysearch/json" + string, function(error, response, body) {
-    first = JSON.parse(body).results[0];
+
+    var rand = Math.floor(Math.random() * JSON.parse(body).results.length)
+    console.log(rand)
+
+    first = JSON.parse(body).results[rand];
 
     result = {
       "name": first.name, //image size down here
-      "icon": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference=" + first.photos[0].photo_reference + "&key=" + get.key,
+      //"icon": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference=" + first.photos[0].photo_reference + "&key=" + get.key,
       "location": first.geometry.location,
       "vicinity": first.vicinity
     };
