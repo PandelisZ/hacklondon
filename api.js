@@ -39,11 +39,12 @@ app.post('/api/search', function(req, res){
 
   var newUsr = new usrDb();
   newUsr.name = req.body.name;
+  newUsr.twitter = req.body.twitter;
   newUsr.location.lat = req.body.lat; // lat, long
   newUsr.location.lng = req.body.lng;
   newUsr.searching = true;
   newUsr.nodel = req.body.nodel;
-  newUsr.img = 'https://avatars.io/twitter/' + req.body.name;
+  newUsr.img = 'https://avatars.io/twitter/' + req.body.twitter;
   //newUsr.criteria.distance
   newUsr.criteria = {food: req.body.food, topic: req.body.topic};
 

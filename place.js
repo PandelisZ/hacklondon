@@ -30,9 +30,8 @@ module.exports.place = function(data, callback) {
   request("https://maps.googleapis.com/maps/api/place/nearbysearch/json" + string, function(error, response, body) {
 
     var rand = Math.floor(Math.random() * JSON.parse(body).results.length)
-    console.log(rand)
 
-    first = JSON.parse(body).results[rand];
+    first = JSON.parse(body).results[0];
 
     result = {
       "name": first.name, //image size down here

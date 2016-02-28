@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 // create a schema
 var userSchema = new Schema({
   name: String,
+  twitter: String,
   nodel: Boolean,
   img: String,
   location: {
