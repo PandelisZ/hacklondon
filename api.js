@@ -58,7 +58,7 @@ app.post('/api/search', function(req, res){
     var id = [];
     id.push(data._id);
     id.push(newUsr.criteria.food);
-    id.push(newUsr.criteria.topic)
+    id.push(newUsr.criteria.topic);
     console.log(id);
     match.get(id, function(resData){
 
